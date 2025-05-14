@@ -51,6 +51,12 @@
     <Compile Include="Datas\Matricula.cs" />
     <Compile Include="Datas\Professor.cs" />
     <Compile Include="Datas\Turma.cs" />
+    <Compile Include="FrmCadastroAlunos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroAlunos.Designer.cs">
+      <DependentUpon>FrmCadastroAlunos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCadastroAlunos.resx">
+      <DependentUpon>FrmCadastroAlunos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
