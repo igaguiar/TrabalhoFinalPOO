@@ -22,7 +22,7 @@ namespace TrabalhoFinalPOO
             AlunoModel alunoModel = new AlunoModel();
             AlunoController alunoController = new AlunoController(frmManutencaoAlunos, alunoModel);
 
-            FrmPrincipal frmPrincipal = new FrmPrincipal(frmManutencaoAlunos);
+            FrmPrincipal frmPrincipal = new FrmPrincipal(frmManutencaoAlunos, alunoController);
             frmPrincipal.ShowDialog();
 
             //Application.EnableVisualStyles();

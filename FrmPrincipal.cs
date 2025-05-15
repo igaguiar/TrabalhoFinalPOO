@@ -15,14 +15,23 @@ namespace TrabalhoFinalPOO
     public partial class FrmPrincipal : Form
     {
         FrmManutencaoAlunos _frmManutencaoAlunos;
-        public FrmPrincipal(FrmManutencaoAlunos frmManutencaoAlunos)
+        AlunoController _alunoController;
+        public FrmPrincipal(FrmManutencaoAlunos frmManutencaoAlunos, AlunoController alunoController)
         {
             InitializeComponent();
             _frmManutencaoAlunos = frmManutencaoAlunos;
+            _alunoController = alunoController;
         }
 
         private void cadastrarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            _alunoController.MenuCriarAluno();
+            _frmManutencaoAlunos.ShowDialog();
+        }
+
+        private void excluirAlunoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _alunoController.MenuExcluirAluno();
             _frmManutencaoAlunos.ShowDialog();
         }
     }

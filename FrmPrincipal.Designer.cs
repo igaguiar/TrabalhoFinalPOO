@@ -97,8 +97,9 @@
             // excluirAlunoToolStripMenuItem
             // 
             this.excluirAlunoToolStripMenuItem.Name = "excluirAlunoToolStripMenuItem";
-            this.excluirAlunoToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
+            this.excluirAlunoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.excluirAlunoToolStripMenuItem.Text = "Excluir Aluno";
+            this.excluirAlunoToolStripMenuItem.Click += new System.EventHandler(this.excluirAlunoToolStripMenuItem_Click);
             // 
             // professoresToolStripMenuItem
             // 
@@ -178,7 +179,7 @@
             this.turmasPorCursoToolStripMenuItem,
             this.alunosPorTurmaToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.listarToolStripMenuItem.Text = "Listar";
             // 
             // turmasPorCursoToolStripMenuItem
@@ -196,7 +197,7 @@
             // realizarMatrículaToolStripMenuItem
             // 
             this.realizarMatrículaToolStripMenuItem.Name = "realizarMatrículaToolStripMenuItem";
-            this.realizarMatrículaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.realizarMatrículaToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.realizarMatrículaToolStripMenuItem.Text = "Realizar Matrícula";
             // 
             // relatóriosToolStripMenuItem
@@ -226,7 +227,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrincipal";
             this.Text = "Sistema de Gestão Academica";
             this.menuStrip1.ResumeLayout(false);

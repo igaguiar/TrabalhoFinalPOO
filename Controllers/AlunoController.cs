@@ -75,5 +75,28 @@ namespace TrabalhoFinalPOO.Controllers
             _manutencaoAlunosView.CPF = string.Empty;
             _manutencaoAlunosView.Email = string.Empty;
         }
+
+        public void MenuCriarAluno()
+        {
+            _manutencaoAlunosView.BotaoExcluir.Visible = false;
+            _manutencaoAlunosView.BotaoCadastrar.Visible = true;
+            _manutencaoAlunosView.BotaoBuscar.Visible = false;
+
+            _manutencaoAlunosView.TextBoxCodigo.Enabled = false;
+            _manutencaoAlunosView.TextBoxCPF.Enabled = true;
+            _manutencaoAlunosView.TextBoxNome.Enabled = true;
+            _manutencaoAlunosView.TextBoxEmail.Enabled = true;
+        }
+        public void MenuExcluirAluno()
+        {
+            _manutencaoAlunosView.BotaoExcluir.Visible = true;
+            _manutencaoAlunosView.BotaoCadastrar.Visible = false;
+            _manutencaoAlunosView.BotaoBuscar.Visible = true;
+
+            _manutencaoAlunosView.TextBoxCodigo.Enabled = true;
+            _manutencaoAlunosView.TextBoxCPF.Enabled = false;
+            _manutencaoAlunosView.TextBoxNome.Enabled = false;
+            _manutencaoAlunosView.TextBoxEmail.Enabled = false;
+        }
     }
 }
