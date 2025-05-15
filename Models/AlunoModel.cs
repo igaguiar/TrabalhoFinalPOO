@@ -23,5 +23,14 @@ namespace TrabalhoFinalPOO.Models
         {
             return alunos.FirstOrDefault(a => a.CPF == cpf);
         }
+        public int BuscarProximoId()
+        {
+            if (alunos.Count == 0)
+            {
+                return 0;
+            }
+
+            return alunos.Max(a => a.Id) + 1;
+        }
     }
 }

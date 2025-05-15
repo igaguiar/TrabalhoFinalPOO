@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabalhoFinalPOO.Datas;
 using TrabalhoFinalPOO.Models;
+using TrabalhoFinalPOO.Utilidades;
 using TrabalhoFinalPOO.Views;
 
 namespace TrabalhoFinalPOO.Controllers
@@ -27,6 +28,24 @@ namespace TrabalhoFinalPOO.Controllers
             string cpf = _manutencaoAlunosView.CPF;
             string email = _manutencaoAlunosView.Email;
 
+            if (!Utilidade.ValidarNome(nome))
+            {
+                MessageBox.Show("Nome inválido! O nome deve ter no mínimo 3 caracteres.");
+                return;
+            }
+
+            if (!Utilidade.ValidarCpf(cpf))
+            {
+                MessageBox.Show("CPF inválido!");
+                return;
+            }
+
+            if (!Utilidade.ValidarEmail(email))
+            {
+                MessageBox.Show("Email inválido!");
+                return;
+            }
+
             // Verificar se o CPF já está cadastrado
             var alunoExistente = _alunoModel.BuscaAlunoPorCpf(cpf);
             if (alunoExistente != null)
@@ -46,6 +65,7 @@ namespace TrabalhoFinalPOO.Controllers
             _alunoModel.Adicionar(aluno);
             MessageBox.Show("Aluno cadastrado com sucesso!");
             LimparCampos();
+            _manutencaoAlunosView.Codigo = _alunoModel.BuscarProximoId().ToString();
         }
         public void BuscarAluno()
         {
@@ -78,6 +98,9 @@ namespace TrabalhoFinalPOO.Controllers
 
         public void MenuCriarAluno()
         {
+            // Carrega codigo com proximo ID
+            _manutencaoAlunosView.Codigo = _alunoModel.BuscarProximoId().ToString();
+
             _manutencaoAlunosView.BotaoExcluir.Visible = false;
             _manutencaoAlunosView.BotaoCadastrar.Visible = true;
             _manutencaoAlunosView.BotaoBuscar.Visible = false;

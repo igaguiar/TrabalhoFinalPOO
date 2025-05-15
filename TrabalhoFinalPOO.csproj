@@ -67,6 +67,7 @@
     <Compile Include="Models\AlunoModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\Utilidade.cs" />
     <Compile Include="Views\IManutencaoAlunosView.cs" />
     <EmbeddedResource Include="FrmManutencaoAlunos.resx">
       <DependentUpon>FrmManutencaoAlunos.cs</DependentUpon>
