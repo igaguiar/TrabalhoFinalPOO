@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabalhoFinalPOO.Controllers;
+using TrabalhoFinalPOO.Models;
 
 namespace TrabalhoFinalPOO
 {
@@ -14,9 +16,18 @@ namespace TrabalhoFinalPOO
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipal());
+            FrmManutencaoAlunos frmManutencaoAlunos = new FrmManutencaoAlunos();
+            frmManutencaoAlunos.Visible = false;
+
+            AlunoModel alunoModel = new AlunoModel();
+            AlunoController alunoController = new AlunoController(frmManutencaoAlunos, alunoModel);
+
+            FrmPrincipal frmPrincipal = new FrmPrincipal(frmManutencaoAlunos);
+            frmPrincipal.ShowDialog();
+
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new FrmPrincipal());
         }
     }
 }

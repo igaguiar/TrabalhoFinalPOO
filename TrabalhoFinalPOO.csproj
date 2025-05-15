@@ -46,16 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Datas\Aluno.cs" />
     <Compile Include="Datas\Curso.cs" />
     <Compile Include="Datas\Matricula.cs" />
     <Compile Include="Datas\Professor.cs" />
     <Compile Include="Datas\Turma.cs" />
-    <Compile Include="FrmCadastroAlunos.cs">
+    <Compile Include="FrmManutencaoAlunos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCadastroAlunos.Designer.cs">
-      <DependentUpon>FrmCadastroAlunos.cs</DependentUpon>
+    <Compile Include="FrmManutencaoAlunos.Designer.cs">
+      <DependentUpon>FrmManutencaoAlunos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -63,10 +64,12 @@
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlunoModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmCadastroAlunos.resx">
-      <DependentUpon>FrmCadastroAlunos.cs</DependentUpon>
+    <Compile Include="Views\IManutencaoAlunosView.cs" />
+    <EmbeddedResource Include="FrmManutencaoAlunos.resx">
+      <DependentUpon>FrmManutencaoAlunos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -93,10 +96,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
