@@ -16,13 +16,7 @@ namespace TrabalhoFinalPOO
         [STAThread]
         static void Main()
         {
-            FrmManutencaoAlunos frmManutencaoAlunos = new FrmManutencaoAlunos();
-            frmManutencaoAlunos.Visible = false;
-
-            AlunoModel alunoModel = new AlunoModel();
-            AlunoController alunoController = new AlunoController(frmManutencaoAlunos, alunoModel);
-
-            FrmPrincipal frmPrincipal = new FrmPrincipal(frmManutencaoAlunos, alunoController);
+            FrmPrincipal frmPrincipal = new FrmPrincipal();
             frmPrincipal.ShowDialog();
 
             //Application.EnableVisualStyles();

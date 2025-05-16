@@ -15,19 +15,25 @@ namespace TrabalhoFinalPOO
     public partial class FrmPrincipal : Form
     {
         FrmManutencaoAlunos _frmManutencaoAlunos;
+        AlunoModel _alunoModel;
         AlunoController _alunoController;
-        FrmManutencaoProfessores _formManutencaoProfessores;
+
+        FrmManutencaoProfessores _frmManutencaoProfessores;
         ProfessorModel _professorModel;
         ProfessorController _professorController;
-        public FrmPrincipal(FrmManutencaoAlunos frmManutencaoAlunos, AlunoController alunoController)
+        public FrmPrincipal()
         {
             InitializeComponent();
-            _frmManutencaoAlunos = frmManutencaoAlunos;
-            _alunoController = alunoController;
+
+            // Estrutura classes aluno
+            _alunoModel = new AlunoModel();
+            _frmManutencaoAlunos = new FrmManutencaoAlunos();
+            _alunoController = new AlunoController(_frmManutencaoAlunos, _alunoModel);
+
+            // Estrutura classes professor
             _professorModel = new ProfessorModel();
-            _formManutencaoProfessores = new FrmManutencaoProfessores();
-            _formManutencaoProfessores.Visible = false;
-            _professorController = new ProfessorController(_formManutencaoProfessores, _professorModel);
+            _frmManutencaoProfessores = new FrmManutencaoProfessores();
+            _professorController = new ProfessorController(_frmManutencaoProfessores, _professorModel);
         }
 
         private void cadastrarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,13 +51,13 @@ namespace TrabalhoFinalPOO
         private void cadastrarProfessorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _professorController.MenuCriarProfessor();
-            _formManutencaoProfessores.ShowDialog();
+            _frmManutencaoProfessores.ShowDialog();
         }
 
         private void excluirProfessorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _professorController.MenuExcluirProfessor();
-            _formManutencaoProfessores.ShowDialog();
+            _frmManutencaoProfessores.ShowDialog();
         }
     }
 }
