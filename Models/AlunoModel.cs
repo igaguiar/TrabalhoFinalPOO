@@ -15,6 +15,10 @@ namespace TrabalhoFinalPOO.Models
         {
             alunos.Add(aluno);
         }
+        public void Remover(Aluno aluno)
+        {
+            alunos.Remove(aluno);
+        }
         public Aluno BuscaAlunoPorId(int id)
         {
             return alunos.FirstOrDefault(a => a.Id == id);
@@ -29,7 +33,6 @@ namespace TrabalhoFinalPOO.Models
             {
                 return 0;
             }
-
             return alunos.Max(a => a.Id) + 1;
         }
     }

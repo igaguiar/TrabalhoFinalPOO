@@ -12,14 +12,14 @@ using TrabalhoFinalPOO.Views;
 
 namespace TrabalhoFinalPOO
 {
-    public partial class FrmManutencaoAlunos : Form, IManutencaoAlunosView
+    public partial class FrmManutencaoProfessores : Form, IManutencaoProfessoresView
     {
-        AlunoController _controller;
-        public FrmManutencaoAlunos()
+        ProfessorController _controller;
+        public FrmManutencaoProfessores()
         {
             InitializeComponent();
         }
-        public void SetController(AlunoController controller)
+        public void SetController(ProfessorController controller)
         {
             _controller = controller;
         }
@@ -79,22 +79,22 @@ namespace TrabalhoFinalPOO
             set { txtEmail = value; }
         }
 
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            _controller.CadastrarAluno();
-        }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            _controller.BuscarAluno();
+            _controller.BuscarProfessor();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            _controller.CadastrarProfessor();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            _controller.ExcluirAluno();
+            _controller.ExcluirProfessor();
         }
 
-        private void FrmManutencaoAlunos_FormClosing(object sender, FormClosingEventArgs e)
+        private void FrmManutencaoProfessores_FormClosing(object sender, FormClosingEventArgs e)
         {
             _controller.LimparCampos();
         }

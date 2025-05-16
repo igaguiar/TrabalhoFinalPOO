@@ -87,7 +87,23 @@ namespace TrabalhoFinalPOO.Controllers
             _manutencaoAlunosView.CPF = aluno.CPF;
             _manutencaoAlunosView.Email = aluno.Email;
         }
-
+        public void ExcluirAluno()
+        {
+            if (!int.TryParse(_manutencaoAlunosView.Codigo, out int codigo))
+            {
+                MessageBox.Show("Código inválido! Por favor, insira um número válido.");
+                return;
+            }
+            var aluno = _alunoModel.BuscaAlunoPorId(codigo);
+            if (aluno == null)
+            {
+                MessageBox.Show("Aluno não encontrado.");
+                return;
+            }
+            _alunoModel.Remover(aluno);
+            MessageBox.Show("Aluno excluído com sucesso!");
+            LimparCampos();
+        }
         public void LimparCampos()
         {
             _manutencaoAlunosView.Codigo = string.Empty;
