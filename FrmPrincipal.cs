@@ -21,6 +21,10 @@ namespace TrabalhoFinalPOO
         FrmManutencaoProfessores _frmManutencaoProfessores;
         ProfessorModel _professorModel;
         ProfessorController _professorController;
+
+        FrmManutencaoCursos _frmManutencaoCursos;
+        CursoModel _cursoModel;
+        CursoController _cursoController;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -34,6 +38,11 @@ namespace TrabalhoFinalPOO
             _professorModel = new ProfessorModel();
             _frmManutencaoProfessores = new FrmManutencaoProfessores();
             _professorController = new ProfessorController(_frmManutencaoProfessores, _professorModel);
+
+            // Estrutura classes curso
+            _cursoModel = new CursoModel();
+            _frmManutencaoCursos = new FrmManutencaoCursos();
+            _cursoController = new CursoController(_frmManutencaoCursos, _cursoModel);
         }
 
         private void cadastrarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,6 +67,18 @@ namespace TrabalhoFinalPOO
         {
             _professorController.MenuExcluirProfessor();
             _frmManutencaoProfessores.ShowDialog();
+        }
+
+        private void cadastrarCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _cursoController.MenuCriarCurso();
+            _frmManutencaoCursos.ShowDialog();
+        }
+
+        private void excluirCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _cursoController.MenuExcluirCurso();
+            _frmManutencaoCursos.ShowDialog();
         }
     }
 }

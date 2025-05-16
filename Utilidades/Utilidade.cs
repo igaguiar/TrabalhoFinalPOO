@@ -21,5 +21,9 @@ namespace TrabalhoFinalPOO.Utilidades
         {
             return Regex.IsMatch(email, @"^[\w\.-]+@[\w\.-]+\.\w+$");
         }
+        public static bool ValidarCargaHoraria(int cargaHoraria)
+        {
+            return cargaHoraria > 0;
+        }
     }
 }
