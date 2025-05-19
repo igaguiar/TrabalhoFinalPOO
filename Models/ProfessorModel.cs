@@ -11,6 +11,10 @@ namespace TrabalhoFinalPOO.Models
     {
         private List<Professor> professores = new List<Professor>();
 
+        public List<Professor> Professores
+        {
+            get { return professores; }
+        }
         public void Adicionar(Professor professor)
         {
             professores.Add(professor);

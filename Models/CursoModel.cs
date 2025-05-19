@@ -10,6 +10,11 @@ namespace TrabalhoFinalPOO.Models
     public class CursoModel
     {
         private List<Curso> cursos = new List<Curso>();
+
+        public List<Curso> Cursos
+        {
+            get { return cursos; }
+        }
         public void Adicionar(Curso curso)
         {
             cursos.Add(curso);

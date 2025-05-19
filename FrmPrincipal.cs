@@ -25,6 +25,10 @@ namespace TrabalhoFinalPOO
         FrmManutencaoCursos _frmManutencaoCursos;
         CursoModel _cursoModel;
         CursoController _cursoController;
+
+        FrmManutencaoTurmas _frmManutencaoTurmas;
+        TurmaModel _turmaModel;
+        TurmaController _turmaController;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -43,6 +47,11 @@ namespace TrabalhoFinalPOO
             _cursoModel = new CursoModel();
             _frmManutencaoCursos = new FrmManutencaoCursos();
             _cursoController = new CursoController(_frmManutencaoCursos, _cursoModel);
+
+            // Estrutura classes turma
+            _turmaModel = new TurmaModel();
+            _frmManutencaoTurmas = new FrmManutencaoTurmas();
+            _turmaController = new TurmaController(_frmManutencaoTurmas, _turmaModel, _cursoModel, _professorModel, _alunoModel);
         }
 
         private void cadastrarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,6 +88,16 @@ namespace TrabalhoFinalPOO
         {
             _cursoController.MenuExcluirCurso();
             _frmManutencaoCursos.ShowDialog();
+        }
+
+        private void criarTurmaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            _frmManutencaoTurmas.ShowDialog();
+        }
+
+        private void excluirTurmaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

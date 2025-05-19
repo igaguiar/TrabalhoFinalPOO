@@ -9,6 +9,7 @@ namespace TrabalhoFinalPOO.Datas
     public class Turma
     {
         public int Id { get; set; }
+        public string Nome { get; set; }
         public int Ano { get; set; }
         public int Semestre { get; set; }
         public int QuantidadeAlunos { get; set; }

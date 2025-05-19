@@ -137,14 +137,14 @@
             // cadastrarCursoToolStripMenuItem
             // 
             this.cadastrarCursoToolStripMenuItem.Name = "cadastrarCursoToolStripMenuItem";
-            this.cadastrarCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarCursoToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.cadastrarCursoToolStripMenuItem.Text = "Cadastrar Curso";
             this.cadastrarCursoToolStripMenuItem.Click += new System.EventHandler(this.cadastrarCursoToolStripMenuItem_Click);
             // 
             // excluirCursoToolStripMenuItem
             // 
             this.excluirCursoToolStripMenuItem.Name = "excluirCursoToolStripMenuItem";
-            this.excluirCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.excluirCursoToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.excluirCursoToolStripMenuItem.Text = "Excluir Curso";
             this.excluirCursoToolStripMenuItem.Click += new System.EventHandler(this.excluirCursoToolStripMenuItem_Click);
             // 
@@ -162,12 +162,14 @@
             this.criarTurmaToolStripMenuItem1.Name = "criarTurmaToolStripMenuItem1";
             this.criarTurmaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.criarTurmaToolStripMenuItem1.Text = "Criar Turma";
+            this.criarTurmaToolStripMenuItem1.Click += new System.EventHandler(this.criarTurmaToolStripMenuItem1_Click);
             // 
             // excluirTurmaToolStripMenuItem
             // 
             this.excluirTurmaToolStripMenuItem.Name = "excluirTurmaToolStripMenuItem";
             this.excluirTurmaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.excluirTurmaToolStripMenuItem.Text = "Excluir Turma";
+            this.excluirTurmaToolStripMenuItem.Click += new System.EventHandler(this.excluirTurmaToolStripMenuItem_Click);
             // 
             // matrículasToolStripMenuItem
             // 
@@ -190,13 +192,13 @@
             // turmasPorCursoToolStripMenuItem
             // 
             this.turmasPorCursoToolStripMenuItem.Name = "turmasPorCursoToolStripMenuItem";
-            this.turmasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.turmasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.turmasPorCursoToolStripMenuItem.Text = "Turmas por Curso";
             // 
             // alunosPorTurmaToolStripMenuItem
             // 
             this.alunosPorTurmaToolStripMenuItem.Name = "alunosPorTurmaToolStripMenuItem";
-            this.alunosPorTurmaToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.alunosPorTurmaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.alunosPorTurmaToolStripMenuItem.Text = "Alunos por Turma";
             // 
             // realizarMatrículaToolStripMenuItem

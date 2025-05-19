@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -49,6 +49,7 @@
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Datas\Aluno.cs" />
     <Compile Include="Datas\Curso.cs" />
     <Compile Include="Datas\Matricula.cs" />
@@ -72,6 +73,12 @@
     <Compile Include="FrmManutencaoProfessores.Designer.cs">
       <DependentUpon>FrmManutencaoProfessores.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmManutencaoTurmas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManutencaoTurmas.Designer.cs">
+      <DependentUpon>FrmManutencaoTurmas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,12 +88,14 @@
     <Compile Include="Models\AlunoModel.cs" />
     <Compile Include="Models\CursoModel.cs" />
     <Compile Include="Models\ProfessorModel.cs" />
+    <Compile Include="Models\TurmaModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Utilidade.cs" />
     <Compile Include="Views\IManutencaoAlunosView.cs" />
     <Compile Include="Views\IManutencaoCursosView.cs" />
     <Compile Include="Views\IManutencaoProfessoresView.cs" />
+    <Compile Include="Views\IManutencaoTurmasView.cs" />
     <EmbeddedResource Include="FrmManutencaoAlunos.resx">
       <DependentUpon>FrmManutencaoAlunos.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManutencaoProfessores.resx">
       <DependentUpon>FrmManutencaoProfessores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManutencaoTurmas.resx">
+      <DependentUpon>FrmManutencaoTurmas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
