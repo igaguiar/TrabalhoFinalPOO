@@ -69,6 +69,35 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Selecione um aluno.");
             }
         }
+        public void RemoverAluno()
+        {
+            DataGridView dgvAlunos = _manutencaoTurmasView.DataGridViewAlunos;
+
+            if (dgvAlunos.SelectedRows.Count > 0)
+            {
+                // Obtém o índice da linha selecionada
+                int rowIndex = dgvAlunos.SelectedRows[0].Index;
+
+                // Obtém o ID do aluno na linha selecionada
+                int alunoId = Convert.ToInt32(dgvAlunos.Rows[rowIndex].Cells["Id"].Value);
+
+                // Remove o aluno da lista
+                Aluno alunoParaRemover = alunos.FirstOrDefault(a => a.Id == alunoId);
+                if (alunoParaRemover != null)
+                {
+                    alunos.Remove(alunoParaRemover);
+                }
+
+                // Remove a linha do DataGridView
+                dgvAlunos.Rows.RemoveAt(rowIndex);
+
+                MessageBox.Show("Aluno removido com sucesso.");
+            }
+            else
+            {
+                MessageBox.Show("Selecione a linha de um aluno para remover.");
+            }
+        }
         public void Load()
         {
             alunos.Clear();

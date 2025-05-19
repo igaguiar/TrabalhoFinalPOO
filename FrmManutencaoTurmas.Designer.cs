@@ -51,6 +51,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnRemoverAluno = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantidadeAlunos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlunos)).BeginInit();
             this.SuspendLayout();
@@ -251,11 +252,22 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
+            // btnRemoverAluno
+            // 
+            this.btnRemoverAluno.Location = new System.Drawing.Point(30, 405);
+            this.btnRemoverAluno.Name = "btnRemoverAluno";
+            this.btnRemoverAluno.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoverAluno.TabIndex = 23;
+            this.btnRemoverAluno.Text = "Remover";
+            this.btnRemoverAluno.UseVisualStyleBackColor = true;
+            this.btnRemoverAluno.Click += new System.EventHandler(this.btnRemoverAluno_Click);
+            // 
             // FrmManutencaoTurmas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 464);
+            this.Controls.Add(this.btnRemoverAluno);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -314,5 +326,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Button btnRemoverAluno;
     }
 }

@@ -91,6 +91,31 @@ namespace TrabalhoFinalPOO
             get { return dgvAlunos; }
             set { dgvAlunos = value; }
         }
+        public Button BuscarNome
+        {
+            get { return btnBuscarNome; }
+            set { btnBuscarNome = value; }
+        }
+        public Button BuscarAluno
+        {
+            get { return btnBuscarAluno; }
+            set { btnBuscarAluno = value; }
+        }
+        public Button AdicionarAluno
+        {
+            get { return btnAdicionarAluno; }
+            set { btnAdicionarAluno = value; }
+        }
+        public Button RemoverAluno
+        {
+            get { return btnRemoverAluno; }
+            set { btnRemoverAluno = value; }
+        }
+        public Button CadastrarTurma
+        {
+            get { return btnCadastrar; }
+            set { btnCadastrar = value; }
+        }
 
         private void FrmManutencaoTurmas_Load(object sender, EventArgs e)
         {
@@ -105,6 +130,11 @@ namespace TrabalhoFinalPOO
         private void btnAdicionarAluno_Click(object sender, EventArgs e)
         {
             _controller.AdicionarAluno();
+        }
+
+        private void btnRemoverAluno_Click(object sender, EventArgs e)
+        {
+            _controller.RemoverAluno();
         }
     }
 }

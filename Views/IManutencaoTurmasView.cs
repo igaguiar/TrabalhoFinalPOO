@@ -26,5 +26,10 @@ namespace TrabalhoFinalPOO.Views
         ComboBox ComboProfessor { get; set; }
         ComboBox ComboAluno { get; set; }
         DataGridView DataGridViewAlunos { get; set; }
+        Button BuscarNome { get; set; }
+        Button BuscarAluno { get; set; }
+        Button AdicionarAluno { get; set; }
+        Button RemoverAluno { get; set; }
+        Button CadastrarTurma { get; set; }
     }
 }
