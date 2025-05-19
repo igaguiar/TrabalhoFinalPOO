@@ -164,6 +164,7 @@
             // 
             // dgvAlunos
             // 
+            this.dgvAlunos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAlunos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlunos.Location = new System.Drawing.Point(129, 278);
             this.dgvAlunos.Name = "dgvAlunos";

@@ -18,6 +18,8 @@ namespace TrabalhoFinalPOO.Controllers
         CursoModel _cursoModel;
         ProfessorModel _professorModel;
         AlunoModel _alunoModel;
+
+        private List<Aluno> alunos = new List<Aluno>();
         public TurmaController(IManutencaoTurmasView manutencaoTurmasView, TurmaModel turmaModel, CursoModel cursoModel, ProfessorModel professorModel, AlunoModel alunoModel)
         {
             _manutencaoTurmasView = manutencaoTurmasView;
@@ -40,8 +42,6 @@ namespace TrabalhoFinalPOO.Controllers
         }
         public void AdicionarAluno()
         {
-            List<Aluno> alunos = new List<Aluno>();
-
             Aluno aluno = _manutencaoTurmasView.Aluno;
             DataGridView dgvAlunos = _manutencaoTurmasView.DataGridViewAlunos;
             if (aluno != null)
@@ -71,6 +71,8 @@ namespace TrabalhoFinalPOO.Controllers
         }
         public void Load()
         {
+            alunos.Clear();
+
             _manutencaoTurmasView.ComboSemestre.Items.Clear();
             _manutencaoTurmasView.ComboSemestre.Items.Add("1");
             _manutencaoTurmasView.ComboSemestre.Items.Add("2");
