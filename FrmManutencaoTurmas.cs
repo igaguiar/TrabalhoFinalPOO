@@ -52,10 +52,12 @@ namespace TrabalhoFinalPOO
         public Curso Curso
         {
             get { return comboCurso.SelectedItem as Curso; }
+            set { comboCurso.SelectedItem = value; }
         }
         public Professor Professor
         {
             get { return comboProfessor.SelectedItem as Professor; }
+            set { comboProfessor.SelectedItem = value; }
         }
         public string NomeAluno
         {
@@ -65,6 +67,7 @@ namespace TrabalhoFinalPOO
         public Aluno Aluno
         {
             get { return comboAluno.SelectedItem as Aluno; }
+            set { comboAluno.SelectedItem = value; }
         }
         public ComboBox ComboSemestre
         {

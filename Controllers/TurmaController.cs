@@ -39,6 +39,21 @@ namespace TrabalhoFinalPOO.Controllers
             string nome = curso.Nome + " " + ano + "/" + semestre;
             Professor professor = _manutencaoTurmasView.Professor;
 
+            var turma = new Turma
+            {
+                Id = _turmaModel.BuscarProximoId(),
+                Nome = nome,
+                Ano = ano,
+                Semestre = semestre,
+                QuantidadeAlunos = quantidadeAlunos,
+                Curso = curso,
+                Professor = professor,
+                Alunos = alunos
+            };
+
+            _turmaModel.Adicionar(turma);
+            MessageBox.Show("Turma cadastrada com sucesso!");
+            LimparCampos();
         }
         public void AdicionarAluno()
         {
@@ -120,6 +135,19 @@ namespace TrabalhoFinalPOO.Controllers
             _manutencaoTurmasView.ComboAluno.DataSource = _alunoModel.Alunos; // Utilizando a propriedade Alunos
             _manutencaoTurmasView.ComboAluno.DisplayMember = "Nome";
             _manutencaoTurmasView.ComboAluno.ValueMember = "Id";
+        }
+        public void LimparCampos()
+        {
+            _manutencaoTurmasView.Nome = string.Empty;
+            _manutencaoTurmasView.Turma = string.Empty;
+            _manutencaoTurmasView.Ano = 0;
+            _manutencaoTurmasView.Semestre = 1;
+            _manutencaoTurmasView.QuantidadeAlunos = 0;
+            _manutencaoTurmasView.Curso = null;
+            _manutencaoTurmasView.Professor = null;
+            _manutencaoTurmasView.NomeAluno = string.Empty;
+            _manutencaoTurmasView.Aluno = null;
+            _manutencaoTurmasView.DataGridViewAlunos.Rows.Clear();
         }
     }
 }

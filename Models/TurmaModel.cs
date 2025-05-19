@@ -22,5 +22,13 @@ namespace TrabalhoFinalPOO.Models
         {
             return turmas.FirstOrDefault(t => t.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
         }
+        public int BuscarProximoId()
+        {
+            if (turmas.Count == 0)
+            {
+                return 0;
+            }
+            return turmas.Max(t => t.Id) + 1;
+        }
     }
 }

@@ -17,10 +17,10 @@ namespace TrabalhoFinalPOO.Views
         int Ano { get; set; }
         int Semestre { get; set; }
         int QuantidadeAlunos { get; set; }
-        Curso Curso { get; }
-        Professor Professor { get; }
+        Curso Curso { get; set; }
+        Professor Professor { get; set; }
         string NomeAluno { get; set; }
-        Aluno Aluno { get; }
+        Aluno Aluno { get; set; }
         ComboBox ComboSemestre { get; set; }
         ComboBox ComboCurso { get; set; }
         ComboBox ComboProfessor { get; set; }
