@@ -15,10 +15,12 @@ namespace TrabalhoFinalPOO.Controllers
     {
         IManutencaoProfessoresView _manutencaoProfessoresView;
         ProfessorModel _professorModel;
-        public ProfessorController(IManutencaoProfessoresView manutencaoProfessoresView, ProfessorModel professorModel)
+        TurmaModel _turmaModel;
+        public ProfessorController(IManutencaoProfessoresView manutencaoProfessoresView, ProfessorModel professorModel, TurmaModel turmaModel)
         {
             _manutencaoProfessoresView = manutencaoProfessoresView;
             _professorModel = professorModel;
+            _turmaModel = turmaModel;
             manutencaoProfessoresView.SetController(this);
         }
         public void CadastrarProfessor()
@@ -94,12 +96,22 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Código inválido! Por favor, insira um número válido.");
                 return;
             }
+
             var professor = _professorModel.BuscaProfessorPorId(codigo);
             if (professor == null)
             {
                 MessageBox.Show("Professor não encontrado.");
                 return;
             }
+
+            // VERIFICA SE ESTÁ EM ALGUMA TURMA
+            bool professorEmTurma = _turmaModel.ObterTurmas().Any(t => t.Professor != null && t.Professor.Id == professor.Id);
+            if (professorEmTurma)
+            {
+                MessageBox.Show("Este professor está vinculado a uma turma e não pode ser excluído.");
+                return;
+            }
+
             _professorModel.Remover(professor);
             MessageBox.Show("Professor excluído com sucesso!");
             LimparCampos();

@@ -14,12 +14,15 @@ namespace TrabalhoFinalPOO.Controllers
     public class TurmaController
     {
         IManutencaoTurmasView _manutencaoTurmasView;
+        ITurmasPorCursoView _turmasPorCursoView;
         TurmaModel _turmaModel;
         CursoModel _cursoModel;
         ProfessorModel _professorModel;
         AlunoModel _alunoModel;
 
-        private List<Aluno> alunos = new List<Aluno>();
+
+        private List<Aluno> alunosTemp = new List<Aluno>(); // lista temporária para a turma em criação
+
         public TurmaController(IManutencaoTurmasView manutencaoTurmasView, TurmaModel turmaModel, CursoModel cursoModel, ProfessorModel professorModel, AlunoModel alunoModel)
         {
             _manutencaoTurmasView = manutencaoTurmasView;
@@ -30,14 +33,22 @@ namespace TrabalhoFinalPOO.Controllers
             _professorModel = professorModel;
             _alunoModel = alunoModel;
         }
+
         public void CadastrarTurma()
         {
             int ano = _manutencaoTurmasView.Ano;
             int semestre = _manutencaoTurmasView.Semestre;
             int quantidadeAlunos = _manutencaoTurmasView.QuantidadeAlunos;
             Curso curso = _manutencaoTurmasView.Curso;
-            string nome = curso.Nome + " " + ano + "/" + semestre;
             Professor professor = _manutencaoTurmasView.Professor;
+
+            if (curso == null || professor == null || quantidadeAlunos <= 0)
+            {
+                MessageBox.Show("Preencha todos os campos obrigatórios antes de cadastrar a turma.");
+                return;
+            }
+
+            string nome = curso.Nome + " " + ano + "/" + semestre;
 
             var turma = new Turma
             {
@@ -48,30 +59,32 @@ namespace TrabalhoFinalPOO.Controllers
                 QuantidadeAlunos = quantidadeAlunos,
                 Curso = curso,
                 Professor = professor,
-                Alunos = alunos
+                Alunos = new List<Aluno>(alunosTemp) // copia da lista temporária
             };
 
             _turmaModel.Adicionar(turma);
+
             MessageBox.Show("Turma cadastrada com sucesso!");
+            alunosTemp.Clear(); // limpa a lista para a próxima turma
             LimparCampos();
         }
+
         public void AdicionarAluno()
         {
             Aluno aluno = _manutencaoTurmasView.Aluno;
             DataGridView dgvAlunos = _manutencaoTurmasView.DataGridViewAlunos;
+
             if (aluno != null)
             {
-                // Verifica se as colunas já foram adicionadas
                 if (dgvAlunos.Columns.Count == 0)
                 {
                     dgvAlunos.Columns.Add("Id", "ID");
                     dgvAlunos.Columns.Add("Nome", "Nome");
                 }
 
-                // Verifica se o aluno já está na lista
-                if (!alunos.Contains(aluno))
+                if (!alunosTemp.Contains(aluno))
                 {
-                    alunos.Add(aluno);
+                    alunosTemp.Add(aluno);
                     dgvAlunos.Rows.Add(aluno.Id, aluno.Nome);
                 }
                 else
@@ -84,28 +97,23 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Selecione um aluno.");
             }
         }
+
         public void RemoverAluno()
         {
             DataGridView dgvAlunos = _manutencaoTurmasView.DataGridViewAlunos;
 
             if (dgvAlunos.SelectedRows.Count > 0)
             {
-                // Obtém o índice da linha selecionada
                 int rowIndex = dgvAlunos.SelectedRows[0].Index;
-
-                // Obtém o ID do aluno na linha selecionada
                 int alunoId = Convert.ToInt32(dgvAlunos.Rows[rowIndex].Cells["Id"].Value);
 
-                // Remove o aluno da lista
-                Aluno alunoParaRemover = alunos.FirstOrDefault(a => a.Id == alunoId);
+                Aluno alunoParaRemover = alunosTemp.FirstOrDefault(a => a.Id == alunoId);
                 if (alunoParaRemover != null)
                 {
-                    alunos.Remove(alunoParaRemover);
+                    alunosTemp.Remove(alunoParaRemover);
                 }
 
-                // Remove a linha do DataGridView
                 dgvAlunos.Rows.RemoveAt(rowIndex);
-
                 MessageBox.Show("Aluno removido com sucesso.");
             }
             else
@@ -113,29 +121,31 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Selecione a linha de um aluno para remover.");
             }
         }
+
         public void Load()
         {
-            alunos.Clear();
+            alunosTemp.Clear();
 
             _manutencaoTurmasView.ComboSemestre.Items.Clear();
             _manutencaoTurmasView.ComboSemestre.Items.Add("1");
             _manutencaoTurmasView.ComboSemestre.Items.Add("2");
 
-            _manutencaoTurmasView.ComboCurso.DataSource = null; // Reseta o DataSource para evitar problemas
-            _manutencaoTurmasView.ComboCurso.DataSource = _cursoModel.Cursos; // Utilizando a propriedade Cursos
+            _manutencaoTurmasView.ComboCurso.DataSource = null;
+            _manutencaoTurmasView.ComboCurso.DataSource = _cursoModel.Cursos;
             _manutencaoTurmasView.ComboCurso.DisplayMember = "Nome";
             _manutencaoTurmasView.ComboCurso.ValueMember = "Id";
 
-            _manutencaoTurmasView.ComboProfessor.DataSource = null; // Reseta o DataSource para evitar problemas
-            _manutencaoTurmasView.ComboProfessor.DataSource = _professorModel.Professores; // Utilizando a propriedade Professores
+            _manutencaoTurmasView.ComboProfessor.DataSource = null;
+            _manutencaoTurmasView.ComboProfessor.DataSource = _professorModel.Professores;
             _manutencaoTurmasView.ComboProfessor.DisplayMember = "Nome";
-            _manutencaoTurmasView.ComboProfessor.ValueMember = "Id";           
+            _manutencaoTurmasView.ComboProfessor.ValueMember = "Id";
 
-            _manutencaoTurmasView.ComboAluno.DataSource = null; // Reseta o DataSource para evitar problemas
-            _manutencaoTurmasView.ComboAluno.DataSource = _alunoModel.Alunos; // Utilizando a propriedade Alunos
+            _manutencaoTurmasView.ComboAluno.DataSource = null;
+            _manutencaoTurmasView.ComboAluno.DataSource = _alunoModel.Alunos;
             _manutencaoTurmasView.ComboAluno.DisplayMember = "Nome";
             _manutencaoTurmasView.ComboAluno.ValueMember = "Id";
         }
+
         public void LimparCampos()
         {
             _manutencaoTurmasView.Nome = string.Empty;
@@ -148,6 +158,71 @@ namespace TrabalhoFinalPOO.Controllers
             _manutencaoTurmasView.NomeAluno = string.Empty;
             _manutencaoTurmasView.Aluno = null;
             _manutencaoTurmasView.DataGridViewAlunos.Rows.Clear();
+        }
+
+        public void ListarAlunosPorTurma(Turma turmaSelecionada, DataGridView dgv)
+        {
+            // Garante que o DataGridView tem as colunas necessárias
+            if (dgv.Columns.Count == 0)
+            {
+                dgv.Columns.Add("Id", "ID");
+                dgv.Columns.Add("Nome", "Nome");
+            }
+
+            dgv.Rows.Clear();
+
+            if (turmaSelecionada != null && turmaSelecionada.Alunos.Count > 0)
+            {
+                foreach (var aluno in turmaSelecionada.Alunos)
+                {
+                    dgv.Rows.Add(aluno.Id, aluno.Nome);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Turma sem alunos cadastrados.");
+            }
+        }
+
+        public List<Turma> GetTurmas()
+        {
+            return _turmaModel.ObterTurmas();
+        }
+        public void SetViewTurmasPorCurso(ITurmasPorCursoView view)
+        {
+            _turmasPorCursoView = view;
+            _turmasPorCursoView.SetController(this);
+
+            _turmasPorCursoView.ComboCurso.DataSource = _cursoModel.Cursos;
+            _turmasPorCursoView.ComboCurso.DisplayMember = "Nome";
+            _turmasPorCursoView.ComboCurso.ValueMember = "Id";
+        }
+        public void ListarTurmasPorCurso(Curso cursoSelecionado, DataGridView dgv)
+        {
+            dgv.Rows.Clear();
+            dgv.Columns.Clear();
+
+            dgv.Columns.Add("Id", "ID");
+            dgv.Columns.Add("Nome", "Nome");
+            dgv.Columns.Add("Ano", "Ano");
+            dgv.Columns.Add("Semestre", "Semestre");
+            dgv.Columns.Add("QtdAlunos", "Qtd. Alunos");
+
+            var turmas = _turmaModel.ObterTurmas()
+                .Where(t => t.Curso != null && t.Curso.Id == cursoSelecionado.Id)
+                .ToList();
+
+            if (turmas.Any())
+            {
+                foreach (var turma in turmas)
+                {
+                    dgv.Rows.Add(turma.Id, turma.Nome, turma.Ano, turma.Semestre, turma.QuantidadeAlunos);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma turma encontrada para o curso selecionado.");
+            }
         }
     }
 }

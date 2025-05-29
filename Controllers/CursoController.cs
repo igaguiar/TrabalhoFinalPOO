@@ -15,10 +15,13 @@ namespace TrabalhoFinalPOO.Controllers
     {
         IManutencaoCursosView _manutencaoCursosView;
         CursoModel _cursoModel;
-        public CursoController(IManutencaoCursosView manutencaoCursosView, CursoModel cursoModel)
+        TurmaModel _turmaModel;
+
+        public CursoController(IManutencaoCursosView manutencaoCursosView, CursoModel cursoModel, TurmaModel turmaModel)
         {
             _manutencaoCursosView = manutencaoCursosView;
             _cursoModel = cursoModel;
+            _turmaModel = turmaModel;
             manutencaoCursosView.SetController(this);
         }
         public void CadastrarCurso()
@@ -77,12 +80,22 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Código inválido! Por favor, insira um número válido.");
                 return;
             }
+
             var curso = _cursoModel.BuscaCursoPorId(codigo);
             if (curso == null)
             {
                 MessageBox.Show("Curso não encontrado.");
                 return;
             }
+
+            // VERIFICAÇÃO DE VÍNCULO COM TURMAS
+            var turmasVinculadas = _turmaModel.ObterTurmas().Where(t => t.Curso.Id == curso.Id).ToList();
+            if (turmasVinculadas.Any())
+            {
+                MessageBox.Show("Não é possível excluir este curso pois há turmas vinculadas a ele.");
+                return;
+            }
+
             _cursoModel.Remover(curso);
             MessageBox.Show("Curso excluído com sucesso!");
             LimparCampos();

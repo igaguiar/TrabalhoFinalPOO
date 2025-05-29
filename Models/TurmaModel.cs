@@ -10,6 +10,7 @@ namespace TrabalhoFinalPOO.Models
     public class TurmaModel
     {
         private List<Turma> turmas = new List<Turma>();
+
         public void Adicionar(Turma turma)
         {
             turmas.Add(turma);
@@ -29,6 +30,10 @@ namespace TrabalhoFinalPOO.Models
                 return 0;
             }
             return turmas.Max(t => t.Id) + 1;
+        }
+        public List<Turma> ObterTurmas()
+        {
+            return turmas;
         }
     }
 }

@@ -15,11 +15,13 @@ namespace TrabalhoFinalPOO.Controllers
     {
         IManutencaoAlunosView _manutencaoAlunosView;
         AlunoModel _alunoModel;
-        public AlunoController(IManutencaoAlunosView manutencaoAlunosView, AlunoModel alunoModel)
+        TurmaModel _turmaModel;
+        public AlunoController(IManutencaoAlunosView manutencaoAlunosView, AlunoModel alunoModel, TurmaModel turmaModel)
         {
             _manutencaoAlunosView = manutencaoAlunosView;
             _alunoModel = alunoModel;
             manutencaoAlunosView.SetController(this);
+            _turmaModel = turmaModel;
         }
         public void CadastrarAluno()
         {
@@ -98,6 +100,15 @@ namespace TrabalhoFinalPOO.Controllers
             if (aluno == null)
             {
                 MessageBox.Show("Aluno não encontrado.");
+                return;
+            }
+
+            // Verifica se o aluno está em alguma turma
+            bool alunoEmTurma = _turmaModel.ObterTurmas().Any(t => t.Alunos.Any(a => a.Id == aluno.Id));
+
+            if (alunoEmTurma)
+            {
+                MessageBox.Show("Não é possível excluir o aluno. Ele já está matriculado em uma turma.");
                 return;
             }
             _alunoModel.Remover(aluno);

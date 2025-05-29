@@ -55,6 +55,12 @@
     <Compile Include="Datas\Matricula.cs" />
     <Compile Include="Datas\Professor.cs" />
     <Compile Include="Datas\Turma.cs" />
+    <Compile Include="FrmAlunosPorTurma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlunosPorTurma.Designer.cs">
+      <DependentUpon>FrmAlunosPorTurma.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmManutencaoAlunos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTurmasPorCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTurmasPorCurso.Designer.cs">
+      <DependentUpon>FrmTurmasPorCurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AlunoModel.cs" />
     <Compile Include="Models\CursoModel.cs" />
     <Compile Include="Models\ProfessorModel.cs" />
@@ -92,10 +104,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Utilidade.cs" />
+    <Compile Include="Views\IAlunosPorTurmaView.cs" />
     <Compile Include="Views\IManutencaoAlunosView.cs" />
     <Compile Include="Views\IManutencaoCursosView.cs" />
     <Compile Include="Views\IManutencaoProfessoresView.cs" />
     <Compile Include="Views\IManutencaoTurmasView.cs" />
+    <Compile Include="Views\ITurmasPorCursoView.cs" />
+    <EmbeddedResource Include="FrmAlunosPorTurma.resx">
+      <DependentUpon>FrmAlunosPorTurma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmManutencaoAlunos.resx">
       <DependentUpon>FrmManutencaoAlunos.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTurmasPorCurso.resx">
+      <DependentUpon>FrmTurmasPorCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

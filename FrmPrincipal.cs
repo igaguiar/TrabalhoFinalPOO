@@ -28,30 +28,28 @@ namespace TrabalhoFinalPOO
         CursoController _cursoController;
 
         FrmManutencaoTurmas _frmManutencaoTurmas;
-        TurmaModel _turmaModel;
         TurmaController _turmaController;
+        TurmaModel _turmaModel;
         public FrmPrincipal()
         {
             InitializeComponent();
 
-            // Estrutura classes aluno
+            // Inicialize primeiro os modelos compartilhados
             _alunoModel = new AlunoModel();
-            _frmManutencaoAlunos = new FrmManutencaoAlunos();
-            _alunoController = new AlunoController(_frmManutencaoAlunos, _alunoModel);
-
-            // Estrutura classes professor
             _professorModel = new ProfessorModel();
-            _frmManutencaoProfessores = new FrmManutencaoProfessores();
-            _professorController = new ProfessorController(_frmManutencaoProfessores, _professorModel);
-
-            // Estrutura classes curso
             _cursoModel = new CursoModel();
-            _frmManutencaoCursos = new FrmManutencaoCursos();
-            _cursoController = new CursoController(_frmManutencaoCursos, _cursoModel);
+            _turmaModel = new TurmaModel(); // <-- ANTES de usar no controller
 
-            // Estrutura classes turma
-            _turmaModel = new TurmaModel();
+            // Inicialize as views
+            _frmManutencaoAlunos = new FrmManutencaoAlunos();
+            _frmManutencaoProfessores = new FrmManutencaoProfessores();
+            _frmManutencaoCursos = new FrmManutencaoCursos();
             _frmManutencaoTurmas = new FrmManutencaoTurmas();
+
+            // Agora sim, passe os modelos para os controllers
+            _alunoController = new AlunoController(_frmManutencaoAlunos, _alunoModel, _turmaModel);
+            _professorController = new ProfessorController(_frmManutencaoProfessores, _professorModel, _turmaModel);
+            _cursoController = new CursoController(_frmManutencaoCursos, _cursoModel, _turmaModel);
             _turmaController = new TurmaController(_frmManutencaoTurmas, _turmaModel, _cursoModel, _professorModel, _alunoModel);
 
             AdicionarDadosIniciais();
@@ -133,5 +131,18 @@ namespace TrabalhoFinalPOO
             _turmaModel.Adicionar(new Turma { Id = 5, Nome = "Turma E", Ano = 2025, Semestre = 2, QuantidadeAlunos = 2, Curso = _cursoModel.Cursos[4], Professor = _professorModel.Professores[4], Alunos = new List<Aluno> { _alunoModel.Alunos[3], _alunoModel.Alunos[4] } });
         }
 
+        private void alunosPorTurmaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAlunosPorTurma frmAlunosPorTurma = new FrmAlunosPorTurma(_turmaController);
+            frmAlunosPorTurma.ShowDialog();
+        }
+
+        private void turmasPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTurmasPorCurso frmTurmasPorCurso = new FrmTurmasPorCurso();
+            frmTurmasPorCurso.SetController(_turmaController);
+            frmTurmasPorCurso.CarregarCursos(_cursoModel.Cursos);
+            frmTurmasPorCurso.ShowDialog();
+        }
     }
 }
