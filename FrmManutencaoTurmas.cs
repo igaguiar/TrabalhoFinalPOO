@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabalhoFinalPOO.Controllers;
 using TrabalhoFinalPOO.Datas;
+using TrabalhoFinalPOO.PadroesProjeto;
 using TrabalhoFinalPOO.Views;
 
 namespace TrabalhoFinalPOO
@@ -23,6 +24,8 @@ namespace TrabalhoFinalPOO
         public void SetController(TurmaController controller)
         {
             _controller = controller;
+
+            _controller.AdicionarObserver(new AlertaQuantidadeAlunosObserver());
         }
         public string Nome
         {
@@ -123,6 +126,7 @@ namespace TrabalhoFinalPOO
         private void FrmManutencaoTurmas_Load(object sender, EventArgs e)
         {
             _controller.Load();
+            _controller.LimparCampos();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

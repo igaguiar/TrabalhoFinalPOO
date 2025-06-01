@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabalhoFinalPOO.Datas;
 using TrabalhoFinalPOO.Models;
+using TrabalhoFinalPOO.PadroesProjeto;
 using TrabalhoFinalPOO.Views;
+
 
 namespace TrabalhoFinalPOO.Controllers
 {
@@ -20,7 +22,7 @@ namespace TrabalhoFinalPOO.Controllers
         ProfessorModel _professorModel;
         AlunoModel _alunoModel;
 
-
+        private List<IObserverTurma> observers = new List<IObserverTurma>();
         private List<Aluno> alunosTemp = new List<Aluno>(); // lista temporária para a turma em criação
 
         public TurmaController(IManutencaoTurmasView manutencaoTurmasView, TurmaModel turmaModel, CursoModel cursoModel, ProfessorModel professorModel, AlunoModel alunoModel)
@@ -42,7 +44,7 @@ namespace TrabalhoFinalPOO.Controllers
             Curso curso = _manutencaoTurmasView.Curso;
             Professor professor = _manutencaoTurmasView.Professor;
 
-            if (curso == null || professor == null || quantidadeAlunos <= 0)
+            if (semestre == null || curso == null || professor == null || quantidadeAlunos <= 0)
             {
                 MessageBox.Show("Preencha todos os campos obrigatórios antes de cadastrar a turma.");
                 return;
@@ -76,6 +78,23 @@ namespace TrabalhoFinalPOO.Controllers
 
             if (aluno != null)
             {
+                // Verifica se já atingiu o limite antes de adicionar
+                if (alunosTemp.Count >= _manutencaoTurmasView.QuantidadeAlunos)
+                {
+                    var turmaTemporaria = new Turma
+                    {
+                        Nome = _manutencaoTurmasView.Nome,
+                        Ano = _manutencaoTurmasView.Ano,
+                        Semestre = _manutencaoTurmasView.Semestre,
+                        Curso = _manutencaoTurmasView.Curso,
+                        QuantidadeAlunos = _manutencaoTurmasView.QuantidadeAlunos,
+                        Alunos = new List<Aluno>(alunosTemp)
+                    };
+
+                    NotificarExcedenteAlunos(turmaTemporaria);
+                    return; // NÃO adiciona o aluno
+                }
+
                 if (dgvAlunos.Columns.Count == 0)
                 {
                     dgvAlunos.Columns.Add("Id", "ID");
@@ -90,6 +109,7 @@ namespace TrabalhoFinalPOO.Controllers
                 else
                 {
                     MessageBox.Show("Aluno já adicionado à turma.");
+                    return;
                 }
             }
             else
@@ -97,6 +117,8 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Selecione um aluno.");
             }
         }
+
+
 
         public void RemoverAluno()
         {
@@ -222,6 +244,24 @@ namespace TrabalhoFinalPOO.Controllers
             else
             {
                 MessageBox.Show("Nenhuma turma encontrada para o curso selecionado.");
+            }
+        }
+
+        public void AdicionarObserver(IObserverTurma observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void RemoverObserver(IObserverTurma observer)
+        {
+            observers.Remove(observer);
+        }
+
+        private void NotificarExcedenteAlunos(Turma turma)
+        {
+            foreach (var observer in observers)
+            {
+                observer.NotificarExcedenteAlunos(turma);
             }
         }
     }
