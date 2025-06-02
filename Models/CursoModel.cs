@@ -9,17 +9,13 @@ namespace TrabalhoFinalPOO.Models
 {
     public class CursoModel
     {
-        // Instância única (singleton)
         private static CursoModel _instance;
 
-        // Lock para thread safety (opcional para apps desktop, mas boa prática)
         private static readonly object _lock = new object();
 
-        // Lista interna de cursos
         private List<Curso> cursos = new List<Curso>();
 
 
-        // Propriedade de acesso à instância única
         public static CursoModel Instance
         {
             get

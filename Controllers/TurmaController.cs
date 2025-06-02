@@ -25,7 +25,7 @@ namespace TrabalhoFinalPOO.Controllers
         private ITurmaFactory _turmaFactory = new TurmaFactoryPadrao();
 
         private List<IObserverTurma> observers = new List<IObserverTurma>();
-        private List<Aluno> alunosTemp = new List<Aluno>(); // lista temporária para a turma em criação
+        private List<Aluno> alunosTemp = new List<Aluno>();
 
         public TurmaController(IManutencaoTurmasView manutencaoTurmasView, CursoModel cursoModel, ProfessorModel professorModel, AlunoModel alunoModel)
         {

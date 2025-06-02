@@ -27,8 +27,8 @@ namespace TrabalhoFinalPOO
         public void CarregarCursos(List<Curso> cursos)
         {
             comboCurso.DataSource = cursos;
-            comboCurso.DisplayMember = "Nome"; // Propriedade a ser exibida
-            comboCurso.ValueMember = "Id";     // Opcional
+            comboCurso.DisplayMember = "Nome";
+            comboCurso.ValueMember = "Id";     
         }
 
         private void comboCurso_SelectedIndexChanged(object sender, EventArgs e)
