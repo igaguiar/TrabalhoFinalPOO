@@ -104,7 +104,6 @@
     <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Datas\Aluno.cs" />
     <Compile Include="Datas\Curso.cs" />
-    <Compile Include="Datas\Matricula.cs" />
     <Compile Include="Datas\Professor.cs" />
     <Compile Include="Datas\Turma.cs" />
     <Compile Include="FrmAlunosPorTurma.cs">
