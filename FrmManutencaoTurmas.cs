@@ -32,10 +32,10 @@ namespace TrabalhoFinalPOO
             get { return txtNome.Text; }
             set { txtNome.Text = value; }
         }
-        public string Turma
+        public Turma Turma
         {
-            get { return comboTurma.Text; }
-            set { comboTurma.Text = value; }
+            get { return comboTurma.SelectedItem as Turma; }
+            set { comboTurma.SelectedItem = value; }
         }
         public int Ano
         {
@@ -122,7 +122,36 @@ namespace TrabalhoFinalPOO
             get { return btnCadastrar; }
             set { btnCadastrar = value; }
         }
-
+        public TextBox TextBoxNome
+        {
+            get { return txtNome; }
+            set { txtNome = value; }
+        }
+        public TextBox TextBoxAno
+        {
+            get { return txtAno; }
+            set { txtAno = value; }
+        }
+        public TextBox TextBoxAluno
+        {
+            get { return txtAluno; }
+            set { txtAluno = value; }
+        }
+        public ComboBox ComboTurma
+        {
+            get { return comboTurma; }
+            set { comboTurma = value; }
+        }
+        public NumericUpDown NumericQuantidadeAlunos
+        {
+            get { return numericQuantidadeAlunos; }
+            set { numericQuantidadeAlunos = value; }
+        }
+        public Button RemoverTurma
+        {
+            get { return btnRemover; }
+            set { btnRemover = value; }
+        }
         private void FrmManutencaoTurmas_Load(object sender, EventArgs e)
         {
             _controller.Load();
@@ -142,6 +171,21 @@ namespace TrabalhoFinalPOO
         private void btnRemoverAluno_Click(object sender, EventArgs e)
         {
             _controller.RemoverAluno();
+        }
+
+        private void btnBuscarAluno_Click(object sender, EventArgs e)
+        {
+            _controller.BuscarAlunoPorNome();
+        }
+
+        private void btnBuscarNome_Click(object sender, EventArgs e)
+        {
+            _controller.BuscarTurmaPorNome();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            _controller.RemoverTurma();
         }
     }
 }

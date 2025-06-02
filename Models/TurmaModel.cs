@@ -19,6 +19,8 @@ namespace TrabalhoFinalPOO.Models
         // Construtor privado para impedir instanciamento externo
         private TurmaModel() { }
 
+        public List<Turma> Turmas => turmas;
+
         public void Adicionar(Turma turma)
         {
             turmas.Add(turma);

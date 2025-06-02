@@ -71,6 +71,24 @@ namespace TrabalhoFinalPOO.Controllers
             LimparCampos();
         }
 
+        public void RemoverTurma()
+        {
+            Turma turma = _manutencaoTurmasView.Turma;
+            if (turma == null)
+            {
+                MessageBox.Show("Selecione uma turma para remover.");
+                return;
+            }
+            var confirmResult = MessageBox.Show("Tem certeza que deseja remover a turma selecionada?", "Confirmação", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                _turmaModel.Remover(turma);
+                MessageBox.Show("Turma removida com sucesso!");
+                Load();
+                LimparCampos();
+            }
+        }
+
         public void AdicionarAluno()
         {
             Aluno aluno = _manutencaoTurmasView.Aluno;
@@ -118,8 +136,6 @@ namespace TrabalhoFinalPOO.Controllers
             }
         }
 
-
-
         public void RemoverAluno()
         {
             DataGridView dgvAlunos = _manutencaoTurmasView.DataGridViewAlunos;
@@ -143,7 +159,34 @@ namespace TrabalhoFinalPOO.Controllers
                 MessageBox.Show("Selecione a linha de um aluno para remover.");
             }
         }
-
+        public void BuscarAlunoPorNome()
+        {
+            string nomeAluno = _manutencaoTurmasView.NomeAluno.Trim().ToLower();
+            if (string.IsNullOrEmpty(nomeAluno))
+            {
+                MessageBox.Show("Digite o nome do aluno para buscar.");
+                return;
+            }
+            var alunoEncontrado = _alunoModel.Alunos.FirstOrDefault(a => a.Nome.ToLower().Contains(nomeAluno));
+            if (alunoEncontrado != null)
+            {
+                _manutencaoTurmasView.Aluno = alunoEncontrado;
+            }
+        }
+        public void BuscarTurmaPorNome()
+        {
+            string nomeTurma = _manutencaoTurmasView.Nome.Trim().ToLower();
+            if (string.IsNullOrEmpty(nomeTurma))
+            {
+                MessageBox.Show("Digite o nome da turma para buscar.");
+                return;
+            }
+            var turmaEncontrada = _turmaModel.Turmas.FirstOrDefault(a => a.Nome.ToLower().Contains(nomeTurma));
+            if (turmaEncontrada != null)
+            {
+                _manutencaoTurmasView.Turma = turmaEncontrada;
+            }
+        }
         public void Load()
         {
             alunosTemp.Clear();
@@ -151,6 +194,11 @@ namespace TrabalhoFinalPOO.Controllers
             _manutencaoTurmasView.ComboSemestre.Items.Clear();
             _manutencaoTurmasView.ComboSemestre.Items.Add("1");
             _manutencaoTurmasView.ComboSemestre.Items.Add("2");
+
+            _manutencaoTurmasView.ComboTurma.DataSource = null;
+            _manutencaoTurmasView.ComboTurma.DataSource = _turmaModel.Turmas;
+            _manutencaoTurmasView.ComboTurma.DisplayMember = "Nome";
+            _manutencaoTurmasView.ComboTurma.ValueMember = "Id";
 
             _manutencaoTurmasView.ComboCurso.DataSource = null;
             _manutencaoTurmasView.ComboCurso.DataSource = _cursoModel.Cursos;
@@ -171,7 +219,7 @@ namespace TrabalhoFinalPOO.Controllers
         public void LimparCampos()
         {
             _manutencaoTurmasView.Nome = string.Empty;
-            _manutencaoTurmasView.Turma = string.Empty;
+            _manutencaoTurmasView.Turma = null;
             _manutencaoTurmasView.Ano = 0;
             _manutencaoTurmasView.Semestre = 1;
             _manutencaoTurmasView.QuantidadeAlunos = 0;
@@ -268,6 +316,44 @@ namespace TrabalhoFinalPOO.Controllers
         {
             var turmas = _turmaModel.ObterTurmas();
             geradorRelatorio.GerarRelatorio(turmas);
+        }
+        public void MenuCriarTurma()
+        {
+            _manutencaoTurmasView.TextBoxNome.Enabled = false;
+            _manutencaoTurmasView.BuscarNome.Enabled = false;
+            _manutencaoTurmasView.ComboTurma.Enabled = false;
+            _manutencaoTurmasView.RemoverTurma.Visible = false;
+
+            _manutencaoTurmasView.TextBoxAno.Enabled = true;
+            _manutencaoTurmasView.ComboSemestre.Enabled = true;
+            _manutencaoTurmasView.NumericQuantidadeAlunos.Enabled = true;
+            _manutencaoTurmasView.ComboCurso.Enabled = true;
+            _manutencaoTurmasView.ComboProfessor.Enabled = true;
+            _manutencaoTurmasView.TextBoxAluno.Enabled = true;
+            _manutencaoTurmasView.BuscarAluno.Enabled = true;
+            _manutencaoTurmasView.ComboAluno.Enabled = true;
+            _manutencaoTurmasView.AdicionarAluno.Enabled = true;
+            _manutencaoTurmasView.RemoverAluno.Enabled = true;
+            _manutencaoTurmasView.CadastrarTurma.Visible = true;
+        }
+        public void MenuExcluirTurma()
+        {
+            _manutencaoTurmasView.TextBoxNome.Enabled = true;
+            _manutencaoTurmasView.BuscarNome.Enabled = true;
+            _manutencaoTurmasView.ComboTurma.Enabled = true;
+            _manutencaoTurmasView.RemoverTurma.Visible = true;
+
+            _manutencaoTurmasView.TextBoxAno.Enabled = false;
+            _manutencaoTurmasView.ComboSemestre.Enabled = false;
+            _manutencaoTurmasView.NumericQuantidadeAlunos.Enabled = false;
+            _manutencaoTurmasView.ComboCurso.Enabled = false;
+            _manutencaoTurmasView.ComboProfessor.Enabled = false;
+            _manutencaoTurmasView.TextBoxAluno.Enabled = false;
+            _manutencaoTurmasView.BuscarAluno.Enabled = false;
+            _manutencaoTurmasView.ComboAluno.Enabled = false;
+            _manutencaoTurmasView.AdicionarAluno.Enabled = false;
+            _manutencaoTurmasView.RemoverAluno.Enabled = false;
+            _manutencaoTurmasView.CadastrarTurma.Visible = false;
         }
     }
 }

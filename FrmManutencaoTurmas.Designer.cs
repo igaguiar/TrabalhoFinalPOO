@@ -52,6 +52,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnRemoverAluno = new System.Windows.Forms.Button();
+            this.btnRemover = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantidadeAlunos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlunos)).BeginInit();
             this.SuspendLayout();
@@ -180,6 +181,7 @@
             this.btnBuscarAluno.TabIndex = 14;
             this.btnBuscarAluno.Text = "Buscar";
             this.btnBuscarAluno.UseVisualStyleBackColor = true;
+            this.btnBuscarAluno.Click += new System.EventHandler(this.btnBuscarAluno_Click);
             // 
             // btnAdicionarAluno
             // 
@@ -215,6 +217,7 @@
             this.btnBuscarNome.TabIndex = 18;
             this.btnBuscarNome.Text = "Buscar";
             this.btnBuscarNome.UseVisualStyleBackColor = true;
+            this.btnBuscarNome.Click += new System.EventHandler(this.btnBuscarNome_Click);
             // 
             // comboTurma
             // 
@@ -244,9 +247,9 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(193, 434);
+            this.btnCadastrar.Location = new System.Drawing.Point(178, 434);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastrar.Size = new System.Drawing.Size(143, 35);
             this.btnCadastrar.TabIndex = 22;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
@@ -262,13 +265,22 @@
             this.btnRemoverAluno.UseVisualStyleBackColor = true;
             this.btnRemoverAluno.Click += new System.EventHandler(this.btnRemoverAluno_Click);
             // 
+            // btnRemover
+            // 
+            this.btnRemover.Location = new System.Drawing.Point(178, 434);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(143, 35);
+            this.btnRemover.TabIndex = 24;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
             // FrmManutencaoTurmas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 464);
+            this.ClientSize = new System.Drawing.Size(502, 481);
             this.Controls.Add(this.btnRemoverAluno);
-            this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboTurma);
@@ -291,6 +303,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCadastrar);
+            this.Controls.Add(this.btnRemover);
             this.Name = "FrmManutencaoTurmas";
             this.Text = "Manutenção de Turmas";
             this.Load += new System.EventHandler(this.FrmManutencaoTurmas_Load);
@@ -327,5 +341,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnRemoverAluno;
+        private System.Windows.Forms.Button btnRemover;
     }
 }

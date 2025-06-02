@@ -91,12 +91,14 @@ namespace TrabalhoFinalPOO
 
         private void criarTurmaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            _turmaController.MenuCriarTurma();
             _frmManutencaoTurmas.ShowDialog();
         }
 
         private void excluirTurmaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            _turmaController.MenuExcluirTurma();
+            _frmManutencaoTurmas.ShowDialog();
         }
         public void AdicionarDadosIniciais()
         {

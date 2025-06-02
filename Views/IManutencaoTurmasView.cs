@@ -13,7 +13,7 @@ namespace TrabalhoFinalPOO.Views
     {
         void SetController(TurmaController controller);
         string Nome { get; set; }
-        string Turma { get; set; }
+        Turma Turma { get; set; }
         int Ano { get; set; }
         int Semestre { get; set; }
         int QuantidadeAlunos { get; set; }
@@ -31,5 +31,11 @@ namespace TrabalhoFinalPOO.Views
         Button AdicionarAluno { get; set; }
         Button RemoverAluno { get; set; }
         Button CadastrarTurma { get; set; }
+        TextBox TextBoxNome { get; set; }
+        TextBox TextBoxAno { get; set; }
+        TextBox TextBoxAluno { get; set; }
+        ComboBox ComboTurma { get; set; }
+        NumericUpDown NumericQuantidadeAlunos { get; set; }
+        Button RemoverTurma { get; set; }
     }
 }
