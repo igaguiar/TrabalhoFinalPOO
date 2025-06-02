@@ -21,36 +21,39 @@ namespace TrabalhoFinalPOO.PadroesProjeto
                 return;
             }
 
-            var alunosPorCurso = turmas
-                .Where(t => t.Curso != null)
-                .GroupBy(t => t.Curso.Nome)
-                .Select(g => new
-                {
-                    Curso = g.Key,
-                    TotalAlunos = g.Sum(t => t.Alunos?.Count ?? 0)
-                })
-                .ToList();
-
             string pasta = @"C:\temp";
             string caminho = Path.Combine(pasta, "relatorio_alunos_por_curso.pdf");
 
             try
             {
-                // Garante que a pasta C:\temp existe
                 if (!Directory.Exists(pasta))
                     Directory.CreateDirectory(pasta);
+
+                // Agrupa turmas por curso usando Composite
+                var cursosAgrupados = turmas
+                    .Where(t => t.Curso != null)
+                    .GroupBy(t => t.Curso.Nome)
+                    .Select(grupo =>
+                    {
+                        var cursoComposite = new CursoComposite(grupo.Key);
+                        foreach (var turma in grupo)
+                            cursoComposite.AdicionarTurma(turma);
+                        return cursoComposite;
+                    })
+                    .ToList();
 
                 Document doc = new Document(PageSize.A4);
                 PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
                 doc.Open();
 
-                doc.Add(new Paragraph("Relatório: Quantidade de Alunos por Curso"));
-                doc.Add(new Paragraph("=========================================="));
+                doc.Add(new Paragraph("Relatório: Alunos por Curso e Turma"));
+                doc.Add(new Paragraph("======================================"));
                 doc.Add(new Paragraph(" "));
 
-                foreach (var item in alunosPorCurso)
+                foreach (var curso in cursosAgrupados)
                 {
-                    doc.Add(new Paragraph($"Curso: {item.Curso} - Alunos: {item.TotalAlunos}"));
+                    curso.Escrever(doc);
+                    doc.Add(new Paragraph(" "));
                 }
 
                 doc.Close();

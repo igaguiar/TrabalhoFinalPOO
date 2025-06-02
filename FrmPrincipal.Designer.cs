@@ -47,7 +47,6 @@
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turmasPorCursoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alunosPorTurmaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.realizarMatrículaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.matrículasPorCursoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -174,8 +173,7 @@
             // matrículasToolStripMenuItem
             // 
             this.matrículasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listarToolStripMenuItem,
-            this.realizarMatrículaToolStripMenuItem});
+            this.listarToolStripMenuItem});
             this.matrículasToolStripMenuItem.Name = "matrículasToolStripMenuItem";
             this.matrículasToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.matrículasToolStripMenuItem.Text = "Matrículas";
@@ -186,28 +184,22 @@
             this.turmasPorCursoToolStripMenuItem,
             this.alunosPorTurmaToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listarToolStripMenuItem.Text = "Listar";
             // 
             // turmasPorCursoToolStripMenuItem
             // 
             this.turmasPorCursoToolStripMenuItem.Name = "turmasPorCursoToolStripMenuItem";
-            this.turmasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.turmasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turmasPorCursoToolStripMenuItem.Text = "Turmas por Curso";
             this.turmasPorCursoToolStripMenuItem.Click += new System.EventHandler(this.turmasPorCursoToolStripMenuItem_Click);
             // 
             // alunosPorTurmaToolStripMenuItem
             // 
             this.alunosPorTurmaToolStripMenuItem.Name = "alunosPorTurmaToolStripMenuItem";
-            this.alunosPorTurmaToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.alunosPorTurmaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.alunosPorTurmaToolStripMenuItem.Text = "Alunos por Turma";
             this.alunosPorTurmaToolStripMenuItem.Click += new System.EventHandler(this.alunosPorTurmaToolStripMenuItem_Click);
-            // 
-            // realizarMatrículaToolStripMenuItem
-            // 
-            this.realizarMatrículaToolStripMenuItem.Name = "realizarMatrículaToolStripMenuItem";
-            this.realizarMatrículaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.realizarMatrículaToolStripMenuItem.Text = "Realizar Matrícula";
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -267,7 +259,6 @@
         private System.Windows.Forms.ToolStripMenuItem listarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem turmasPorCursoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alunosPorTurmaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem realizarMatrículaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem matrículasPorCursoToolStripMenuItem;
     }
