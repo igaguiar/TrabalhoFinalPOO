@@ -7,8 +7,8 @@ using TrabalhoFinalPOO.Datas;
 
 namespace TrabalhoFinalPOO.PadroesProjeto
 {
-    public abstract class TurmaCreator
+    public interface ITurmaFactory
     {
-        public abstract Turma CriarTurma(int ano, int semestre, int quantidadeAlunos, Curso curso, Professor professor, List<Aluno> alunos);
+        Turma CriarTurma(int id, string nome, int ano, int semestre, int quantidadeAlunos, Curso curso, Professor professor, List<Aluno> alunos);
     }
 }

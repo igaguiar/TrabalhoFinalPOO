@@ -158,12 +158,12 @@
     <Compile Include="PadroesProjeto\IElementoRelatorio.cs" />
     <Compile Include="PadroesProjeto\IObserverTurma.cs" />
     <Compile Include="PadroesProjeto\IRelatorioAdapter.cs" />
+    <Compile Include="PadroesProjeto\ITurmaFactory.cs" />
     <Compile Include="PadroesProjeto\RelatorioMessageBoxAdapter.cs" />
     <Compile Include="PadroesProjeto\RelatorioPdfAdapter.cs" />
     <Compile Include="PadroesProjeto\RelatorioTxtAdapter.cs" />
     <Compile Include="PadroesProjeto\TurmaComposite.cs" />
-    <Compile Include="PadroesProjeto\TurmaCreator.cs" />
-    <Compile Include="PadroesProjeto\TurmaPadraoCreator.cs" />
+    <Compile Include="PadroesProjeto\TurmaFactoryPadrao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Utilidade.cs" />

@@ -7,22 +7,13 @@ using TrabalhoFinalPOO.Datas;
 
 namespace TrabalhoFinalPOO.PadroesProjeto
 {
-    public class TurmaPadraoCreator : TurmaCreator
+    public class TurmaFactoryPadrao : ITurmaFactory
     {
-        private int _id;
-
-        public TurmaPadraoCreator(int proximoId)
+        public Turma CriarTurma(int id, string nome, int ano, int semestre, int quantidadeAlunos, Curso curso, Professor professor, List<Aluno> alunos)
         {
-            _id = proximoId;
-        }
-
-        public override Turma CriarTurma(int ano, int semestre, int quantidadeAlunos, Curso curso, Professor professor, List<Aluno> alunos)
-        {
-            string nome = $"{curso.Nome} {ano}/{semestre}";
-
             return new Turma
             {
-                Id = _id,
+                Id = id,
                 Nome = nome,
                 Ano = ano,
                 Semestre = semestre,

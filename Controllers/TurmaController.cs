@@ -22,6 +22,8 @@ namespace TrabalhoFinalPOO.Controllers
         ProfessorModel _professorModel;
         AlunoModel _alunoModel;
 
+        private ITurmaFactory _turmaFactory = new TurmaFactoryPadrao();
+
         private List<IObserverTurma> observers = new List<IObserverTurma>();
         private List<Aluno> alunosTemp = new List<Aluno>(); // lista temporária para a turma em criação
 
@@ -50,10 +52,10 @@ namespace TrabalhoFinalPOO.Controllers
                 return;
             }
 
-            int id = _turmaModel.BuscarProximoId();
+            string nome = curso.Nome + " " + ano + "/" + semestre;
 
-            var turmaCreator = new TurmaPadraoCreator(id);
-            var turma = turmaCreator.CriarTurma(ano, semestre, quantidadeAlunos, curso, professor, new List<Aluno>(alunosTemp));
+            int id = _turmaModel.BuscarProximoId();
+            Turma turma = _turmaFactory.CriarTurma(id, nome, ano, semestre, quantidadeAlunos, curso, professor, new List<Aluno>(alunosTemp));
 
             _turmaModel.Adicionar(turma);
 
