@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TrabalhoFinalPOO.Controllers;
 using TrabalhoFinalPOO.Datas;
 using TrabalhoFinalPOO.Models;
+using TrabalhoFinalPOO.PadroesProjeto;
 
 namespace TrabalhoFinalPOO
 {
@@ -143,6 +144,12 @@ namespace TrabalhoFinalPOO
             frmTurmasPorCurso.SetController(_turmaController);
             frmTurmasPorCurso.CarregarCursos(_cursoModel.Cursos);
             frmTurmasPorCurso.ShowDialog();
+        }
+
+        private void matrículasPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IRelatorioAdapter relatorio = new RelatorioPdfAdapter();
+            _turmaController.GerarRelatorio(relatorio);
         }
     }
 }

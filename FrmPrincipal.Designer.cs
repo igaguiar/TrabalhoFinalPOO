@@ -186,27 +186,27 @@
             this.turmasPorCursoToolStripMenuItem,
             this.alunosPorTurmaToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.listarToolStripMenuItem.Text = "Listar";
             // 
             // turmasPorCursoToolStripMenuItem
             // 
             this.turmasPorCursoToolStripMenuItem.Name = "turmasPorCursoToolStripMenuItem";
-            this.turmasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.turmasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.turmasPorCursoToolStripMenuItem.Text = "Turmas por Curso";
             this.turmasPorCursoToolStripMenuItem.Click += new System.EventHandler(this.turmasPorCursoToolStripMenuItem_Click);
             // 
             // alunosPorTurmaToolStripMenuItem
             // 
             this.alunosPorTurmaToolStripMenuItem.Name = "alunosPorTurmaToolStripMenuItem";
-            this.alunosPorTurmaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alunosPorTurmaToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.alunosPorTurmaToolStripMenuItem.Text = "Alunos por Turma";
             this.alunosPorTurmaToolStripMenuItem.Click += new System.EventHandler(this.alunosPorTurmaToolStripMenuItem_Click);
             // 
             // realizarMatrículaToolStripMenuItem
             // 
             this.realizarMatrículaToolStripMenuItem.Name = "realizarMatrículaToolStripMenuItem";
-            this.realizarMatrículaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.realizarMatrículaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.realizarMatrículaToolStripMenuItem.Text = "Realizar Matrícula";
             // 
             // relatóriosToolStripMenuItem
@@ -222,6 +222,7 @@
             this.matrículasPorCursoToolStripMenuItem.Name = "matrículasPorCursoToolStripMenuItem";
             this.matrículasPorCursoToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.matrículasPorCursoToolStripMenuItem.Text = "Matrículas por Curso";
+            this.matrículasPorCursoToolStripMenuItem.Click += new System.EventHandler(this.matrículasPorCursoToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 

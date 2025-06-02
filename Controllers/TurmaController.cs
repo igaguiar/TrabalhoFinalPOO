@@ -264,5 +264,10 @@ namespace TrabalhoFinalPOO.Controllers
                 observer.NotificarExcedenteAlunos(turma);
             }
         }
+        public void GerarRelatorio(IRelatorioAdapter geradorRelatorio)
+        {
+            var turmas = _turmaModel.ObterTurmas();
+            geradorRelatorio.GerarRelatorio(turmas);
+        }
     }
 }
