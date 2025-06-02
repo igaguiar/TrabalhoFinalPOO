@@ -9,22 +9,13 @@ namespace TrabalhoFinalPOO.Models
 {
     public class AlunoModel
     {
-        // Instância única da classe (lazy e thread-safe)
         private static readonly Lazy<AlunoModel> _instance = new Lazy<AlunoModel>(() => new AlunoModel());
-
-        // Propriedade pública para acesso à instância
         public static AlunoModel Instance => _instance.Value;
 
-        // Lista privada de alunos
-        private List<Aluno> alunos;
+        private List<Aluno> alunos = new List<Aluno>();
 
-        // Construtor privado para evitar instanciação externa
-        private AlunoModel()
-        {
-            alunos = new List<Aluno>();
-        }
+        private AlunoModel() { }
 
-        // Acesso à lista de alunos (somente leitura)
         public List<Aluno> Alunos => alunos;
 
         public void Adicionar(Aluno aluno)

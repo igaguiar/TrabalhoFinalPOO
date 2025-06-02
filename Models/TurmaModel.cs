@@ -9,14 +9,11 @@ namespace TrabalhoFinalPOO.Models
 {
     public class TurmaModel
     {
-        // Instância única (Lazy thread-safe)
         private static readonly Lazy<TurmaModel> _instance = new Lazy<TurmaModel>(() => new TurmaModel());
         public static TurmaModel Instance => _instance.Value;
 
-        // Lista de turmas privada
         private List<Turma> turmas = new List<Turma>();
 
-        // Construtor privado para impedir instanciamento externo
         private TurmaModel() { }
 
         public List<Turma> Turmas => turmas;

@@ -162,6 +162,8 @@
     <Compile Include="PadroesProjeto\RelatorioPdfAdapter.cs" />
     <Compile Include="PadroesProjeto\RelatorioTxtAdapter.cs" />
     <Compile Include="PadroesProjeto\TurmaComposite.cs" />
+    <Compile Include="PadroesProjeto\TurmaCreator.cs" />
+    <Compile Include="PadroesProjeto\TurmaPadraoCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Utilidade.cs" />

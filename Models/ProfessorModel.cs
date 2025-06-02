@@ -9,18 +9,8 @@ namespace TrabalhoFinalPOO.Models
 {
     public class ProfessorModel
     {
-        private static ProfessorModel _instance;
-        public static ProfessorModel Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new ProfessorModel();
-                }
-                return _instance;
-            }
-        }
+        private static readonly Lazy<ProfessorModel> _instance = new Lazy<ProfessorModel>(() => new ProfessorModel());
+        public static ProfessorModel Instance => _instance.Value;
 
         private List<Professor> professores = new List<Professor>();
 

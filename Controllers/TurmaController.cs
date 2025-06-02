@@ -50,24 +50,15 @@ namespace TrabalhoFinalPOO.Controllers
                 return;
             }
 
-            string nome = curso.Nome + " " + ano + "/" + semestre;
+            int id = _turmaModel.BuscarProximoId();
 
-            var turma = new Turma
-            {
-                Id = _turmaModel.BuscarProximoId(),
-                Nome = nome,
-                Ano = ano,
-                Semestre = semestre,
-                QuantidadeAlunos = quantidadeAlunos,
-                Curso = curso,
-                Professor = professor,
-                Alunos = new List<Aluno>(alunosTemp) // copia da lista temporária
-            };
+            var turmaCreator = new TurmaPadraoCreator(id);
+            var turma = turmaCreator.CriarTurma(ano, semestre, quantidadeAlunos, curso, professor, new List<Aluno>(alunosTemp));
 
             _turmaModel.Adicionar(turma);
 
             MessageBox.Show("Turma cadastrada com sucesso!");
-            alunosTemp.Clear(); // limpa a lista para a próxima turma
+            alunosTemp.Clear();
             LimparCampos();
         }
 

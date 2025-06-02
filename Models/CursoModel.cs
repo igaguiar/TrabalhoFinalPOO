@@ -18,8 +18,6 @@ namespace TrabalhoFinalPOO.Models
         // Lista interna de cursos
         private List<Curso> cursos = new List<Curso>();
 
-        // Construtor privado
-        private CursoModel() { }
 
         // Propriedade de acesso à instância única
         public static CursoModel Instance
