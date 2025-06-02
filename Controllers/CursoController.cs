@@ -17,10 +17,10 @@ namespace TrabalhoFinalPOO.Controllers
         CursoModel _cursoModel;
         TurmaModel _turmaModel;
 
-        public CursoController(IManutencaoCursosView manutencaoCursosView, CursoModel cursoModel, TurmaModel turmaModel)
+        public CursoController(IManutencaoCursosView manutencaoCursosView, TurmaModel turmaModel)
         {
             _manutencaoCursosView = manutencaoCursosView;
-            _cursoModel = cursoModel;
+            _cursoModel = CursoModel.Instance; // Usando Singleton
             _turmaModel = turmaModel;
             manutencaoCursosView.SetController(this);
         }

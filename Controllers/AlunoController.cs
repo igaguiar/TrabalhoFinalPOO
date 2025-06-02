@@ -16,12 +16,13 @@ namespace TrabalhoFinalPOO.Controllers
         IManutencaoAlunosView _manutencaoAlunosView;
         AlunoModel _alunoModel;
         TurmaModel _turmaModel;
-        public AlunoController(IManutencaoAlunosView manutencaoAlunosView, AlunoModel alunoModel, TurmaModel turmaModel)
+
+        public AlunoController(IManutencaoAlunosView manutencaoAlunosView, TurmaModel turmaModel)
         {
             _manutencaoAlunosView = manutencaoAlunosView;
-            _alunoModel = alunoModel;
-            manutencaoAlunosView.SetController(this);
+            _alunoModel = AlunoModel.Instance;  // usa o Singleton aqui
             _turmaModel = turmaModel;
+            manutencaoAlunosView.SetController(this);
         }
         public void CadastrarAluno()
         {

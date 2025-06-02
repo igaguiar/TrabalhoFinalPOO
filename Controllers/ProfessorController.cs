@@ -16,10 +16,10 @@ namespace TrabalhoFinalPOO.Controllers
         IManutencaoProfessoresView _manutencaoProfessoresView;
         ProfessorModel _professorModel;
         TurmaModel _turmaModel;
-        public ProfessorController(IManutencaoProfessoresView manutencaoProfessoresView, ProfessorModel professorModel, TurmaModel turmaModel)
+        public ProfessorController(IManutencaoProfessoresView manutencaoProfessoresView, TurmaModel turmaModel)
         {
             _manutencaoProfessoresView = manutencaoProfessoresView;
-            _professorModel = professorModel;
+            _professorModel = ProfessorModel.Instance;
             _turmaModel = turmaModel;
             manutencaoProfessoresView.SetController(this);
         }

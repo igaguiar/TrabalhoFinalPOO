@@ -9,28 +9,48 @@ namespace TrabalhoFinalPOO.Models
 {
     public class ProfessorModel
     {
+        private static ProfessorModel _instance;
+        public static ProfessorModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ProfessorModel();
+                }
+                return _instance;
+            }
+        }
+
         private List<Professor> professores = new List<Professor>();
+
+        private ProfessorModel() { }
 
         public List<Professor> Professores
         {
             get { return professores; }
         }
+
         public void Adicionar(Professor professor)
         {
             professores.Add(professor);
         }
+
         public void Remover(Professor professor)
         {
             professores.Remove(professor);
         }
+
         public Professor BuscaProfessorPorId(int id)
         {
             return professores.FirstOrDefault(p => p.Id == id);
         }
+
         public Professor BuscaProfessorPorCpf(string cpf)
         {
             return professores.FirstOrDefault(p => p.CPF == cpf);
         }
+
         public int BuscarProximoId()
         {
             if (professores.Count == 0)

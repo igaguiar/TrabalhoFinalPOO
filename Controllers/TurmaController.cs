@@ -25,10 +25,10 @@ namespace TrabalhoFinalPOO.Controllers
         private List<IObserverTurma> observers = new List<IObserverTurma>();
         private List<Aluno> alunosTemp = new List<Aluno>(); // lista temporária para a turma em criação
 
-        public TurmaController(IManutencaoTurmasView manutencaoTurmasView, TurmaModel turmaModel, CursoModel cursoModel, ProfessorModel professorModel, AlunoModel alunoModel)
+        public TurmaController(IManutencaoTurmasView manutencaoTurmasView, CursoModel cursoModel, ProfessorModel professorModel, AlunoModel alunoModel)
         {
             _manutencaoTurmasView = manutencaoTurmasView;
-            _turmaModel = turmaModel;
+            _turmaModel = TurmaModel.Instance;
             _manutencaoTurmasView.SetController(this);
 
             _cursoModel = cursoModel;

@@ -35,23 +35,20 @@ namespace TrabalhoFinalPOO
         {
             InitializeComponent();
 
-            // Inicialize primeiro os modelos compartilhados
-            _alunoModel = new AlunoModel();
-            _professorModel = new ProfessorModel();
-            _cursoModel = new CursoModel();
-            _turmaModel = new TurmaModel(); // <-- ANTES de usar no controller
+            _alunoModel = AlunoModel.Instance;
+            _professorModel = ProfessorModel.Instance;
+            _cursoModel = CursoModel.Instance;
+            _turmaModel = TurmaModel.Instance;
 
-            // Inicialize as views
             _frmManutencaoAlunos = new FrmManutencaoAlunos();
             _frmManutencaoProfessores = new FrmManutencaoProfessores();
             _frmManutencaoCursos = new FrmManutencaoCursos();
             _frmManutencaoTurmas = new FrmManutencaoTurmas();
 
-            // Agora sim, passe os modelos para os controllers
-            _alunoController = new AlunoController(_frmManutencaoAlunos, _alunoModel, _turmaModel);
-            _professorController = new ProfessorController(_frmManutencaoProfessores, _professorModel, _turmaModel);
-            _cursoController = new CursoController(_frmManutencaoCursos, _cursoModel, _turmaModel);
-            _turmaController = new TurmaController(_frmManutencaoTurmas, _turmaModel, _cursoModel, _professorModel, _alunoModel);
+            _alunoController = new AlunoController(_frmManutencaoAlunos, _turmaModel);
+            _professorController = new ProfessorController(_frmManutencaoProfessores, _turmaModel);
+            _cursoController = new CursoController(_frmManutencaoCursos, _turmaModel);
+            _turmaController = new TurmaController(_frmManutencaoTurmas, _cursoModel, _professorModel, _alunoModel);
 
             AdicionarDadosIniciais();
         }
